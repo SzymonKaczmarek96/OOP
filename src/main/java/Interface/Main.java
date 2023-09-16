@@ -28,7 +28,7 @@ public class Main {
         for(FamilyMember familyMember: familyList){
 
             familyMember.introduceYourself();
-            System.out.println(familyMember.isAdult());
+            System.out.println("It's adult: " + familyMember.isAdult());
         }
 
 
