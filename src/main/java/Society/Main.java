@@ -21,9 +21,11 @@ public class Main {
         town.addCitizenToTownList(king);
 
 
+
+
         System.out.println("The number of peoples who can vote: " + town.howManyCanVote());
 
-        town.whoCanVote();
+         System.out.println(town.whoCanVote());;
 
 
     }

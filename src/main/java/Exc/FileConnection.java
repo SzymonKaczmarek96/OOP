@@ -26,64 +26,40 @@ public class FileConnection {
     }
 
 
-    public void connect() throws FileConnectionException {
-
+    public boolean connect() throws FileConnectionException {
         Random random = new Random();
-
         int disconnectChance = random.nextInt(4);
-
-
         if (disconnectChance == 0) {
             throw new FileConnectionException("Cannot connect to the file");
         }
-
         file = new File(fileName);
-
-        isConnected = true;
-
-
+       return isConnected = true;
     }
 
     public List<String> readFile() throws FileDbConnectionException {
-
-
+        Scanner sc = null;
         try {
-
-            Scanner sc = new Scanner(file);
-
+            sc = new Scanner(file);
             System.out.println("Books in file: ");
-
             while (sc.hasNextLine()) {
                 String title = sc.nextLine();;
-
                 bookList.add(title);
-
             }
-
-            sc.close();
-
             if(bookList.isEmpty()) {
                 throw new FileDbConnectionException("File is empty");
             }
         }catch (IOException e) {
             throw new FileDbConnectionException("File not exist ");
+        }finally {
+            sc.close();
         }
-
         return bookList;
     }
 
-
     public void disconnect() {
-
         isConnected = false;
-
         System.out.println("Disconnected from file");
-
-
     }
-
-
-
 
     @Override
     public String toString() {

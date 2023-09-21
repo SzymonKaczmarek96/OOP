@@ -10,49 +10,33 @@ public class Main {
 
     public static void main(String[] args){
 
+        Scanner sc = new Scanner(System.in);
         try{
             String error = null;
-
             System.out.println(error.length());
-
-
-
         }catch (NullPointerException e){
-
             System.out.println("The exception was handled");
-
         }
-
-
 
         try {
-            Scanner sc = new Scanner(System.in);
-
             System.out.println("Enter number: ");
-
             int number = sc.nextInt();
-
             System.out.println(number);
-
             sc.close();
         }catch (InputMismatchException e) {
-
             System.out.println("Given letters, cannot be a converted to int type");
-
+        }finally {
+            sc.close();
         }
 
-
-
-
         String fileName = "C:\\Users\\szymo\\IdeaProjects\\JavaOOPBacis\\src\\main\\java\\Exc\\books.txt";
-
 
         FileConnection fileConnection = new FileConnection(fileName);
 
         try {
-            fileConnection.connect();
+            if(fileConnection.connect()){
             List<String> books = fileConnection.readFile() ;
-            System.out.println(books);
+            System.out.println(books);}
         } catch (FileConnectionException e) {
             throw new RuntimeException(e);
         }catch (FileDbConnectionException e) {

@@ -4,7 +4,6 @@ public abstract class Citizen {
 
     private String name;
 
-
     public Citizen(String name) {
         this.name = name;
     }
@@ -16,5 +15,10 @@ public abstract class Citizen {
     public abstract boolean canVote();
 
 
-
+    @Override
+    public String toString() {
+        return "Citizen{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
